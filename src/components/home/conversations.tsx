@@ -3,7 +3,22 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { MessageSeenSvg } from "@/lib/svgs";
 import { ImageIcon, Users, VideoIcon } from "lucide-react";
 
-const Conversation = ({ conversation }: { conversation: any }) => {
+/* interface ConversationProps {
+    conversation: {
+      groupImage?: string;
+      groupName?: string;
+      lastMessage?: {
+        messageType?: string;
+        content?: string;
+        sender?: string;
+        _creationTime?: string ;
+      };
+      isOnline?: boolean;
+      isGroup?: boolean;
+      _creationTime?: string;
+    };
+  } */
+const Conversation = ({ conversation }: any) => {
 	const conversationImage = conversation.groupImage;
 	const conversationName = conversation.groupName || "Private Chat";
 	const lastMessage = conversation.lastMessage;
