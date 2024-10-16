@@ -6,7 +6,7 @@ import {
   User,
 } from "lucide-react";
 import { Input } from "../ui/input";
-import ThemeSwitch from "../theme-switch";
+import ThemeSwitch from "./theme-switch";
 import Conversation from "./conversations";
 
 interface ConversationType {
@@ -51,7 +51,7 @@ const LeftPanel = () => {
       <div className="my-3 flex flex-col gap-0 max-h-[80%] overflow-auto">
         {/* Conversations will go here*/}
         {conversations?.map((conversation) => (
-          <Conversation conversation={conversation} key={conversation._id} />
+          <Conversation key={conversation._id} conversation={conversation}  />
         ))}
 
         {conversations?.length === 0 && (

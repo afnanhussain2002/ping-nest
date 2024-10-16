@@ -10,6 +10,8 @@ const RightPanel = () => {
 	const selectedConversation = null;
 	if (!selectedConversation) return <ChatPlaceHolder />;
 
+  const isGroup = true;
+
 	const conversationName = "John Doe";
 
 	return (
@@ -26,7 +28,7 @@ const RightPanel = () => {
 						</Avatar>
 						<div className='flex flex-col'>
 							<p>{conversationName}</p>
-							{/* {isGroup && <GroupMembersDialog />} */}
+							{isGroup && <GroupMembersDialog />}
 						</div>
 					</div>
 
