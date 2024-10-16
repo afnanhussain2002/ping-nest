@@ -1,7 +1,7 @@
 const configAuth = {
     providers: [
       {
-        domain: "https://your-issuer-url.clerk.accounts.dev/",
+        domain: "https://climbing-pika-74.clerk.accounts.dev",
         applicationID: "convex",
       },
     ]
