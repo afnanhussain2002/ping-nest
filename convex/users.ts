@@ -19,3 +19,10 @@ export const createUser = internalMutation({
         })
     }
 })
+
+export const setUserOffline = internalMutation({
+    args:{tokenIdentifier:v.string()},
+    handler: async(ctx,args) => {
+        const user = await ctx.db.query("users")
+    }
+})
