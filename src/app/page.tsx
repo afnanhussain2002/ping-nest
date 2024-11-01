@@ -2,10 +2,10 @@
 
 import LeftPanel from "@/components/home/LeftPanel";
 import RightPanel from "@/components/home/RightPanel";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 
 export default function Home() {
-	const { setTheme } = useTheme();
+	// const { setTheme } = useTheme();
 
 	return (
 		<main className='m-5'>
