@@ -24,7 +24,6 @@ const LeftPanel = () => {
           <UserButton />
 
           <div className="flex items-center gap-3">
-            <MessageSquareDiff size={20} />{" "}
             <UserListDialog/>
             <ThemeSwitch />
            
