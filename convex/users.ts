@@ -79,7 +79,7 @@ export const getUsers =  query({
     }
 })
 
-const getMe = query({
+export const getMe = query({
     args:{},
     handler: async(ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();

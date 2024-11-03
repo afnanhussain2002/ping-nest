@@ -12,8 +12,10 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { ImageIcon, MessageSquareDiff } from "lucide-react";
-import { users } from "@/dummy-data/db";
+// import { users } from "@/dummy-data/db";
 import { Id } from "../../../convex/_generated/dataModel";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const UserListDialog = () => {
 	const [selectedUsers, setSelectedUsers] = useState<Id<"users">[]>([]);
@@ -22,6 +24,32 @@ const UserListDialog = () => {
 	const [selectedImage, setSelectedImage] = useState<File | null>(null);
 	const [renderedImage, setRenderedImage] = useState("");
 	const imgRef = useRef<HTMLInputElement>(null);
+
+    const createConversation = useMutation(api.conversations.createConversation);
+    const me = useQuery(api.users.getMe);
+    const users = useQuery(api.users.getUsers);
+
+    const handleCreateConversation = async () => {
+        if (selectedUsers.length === 0) {
+            setIsLoading(true);
+            try {
+                const isGroup = selectedUsers.length > 1;
+                let conversationId;
+                if (!isGroup) {
+                   conversationId = await createConversation({
+                        participants: [...selectedUsers, me!._id!],
+                        isGroupe:false
+                    })
+                }else{
+
+                }
+            } catch (error) {
+                console.log(error);
+            }finally{
+                setIsLoading(false);
+            }
+        }
+    }
 
     useEffect(() =>{
         if (!selectedImage) return;
@@ -105,6 +133,7 @@ const UserListDialog = () => {
 				<div className='flex justify-between'>
 					<Button variant={"outline"}>Cancel</Button>
 					<Button
+                    onClick={handleCreateConversation}
 						disabled={selectedUsers.length === 0 || (selectedUsers.length > 1 && !groupName) || isLoading}
 					>
 						{/* spinner */}
