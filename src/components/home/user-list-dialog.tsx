@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -22,6 +22,13 @@ const UserListDialog = () => {
 	const [selectedImage, setSelectedImage] = useState<File | null>(null);
 	const [renderedImage, setRenderedImage] = useState("");
 	const imgRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() =>{
+        if (!selectedImage) return;
+        const reader = new FileReader();
+        reader.onload = (e) => setRenderedImage(e.target!.result as string);
+        reader.readAsDataURL(selectedImage);
+    },[selectedImage])
 
 	return (
 		<Dialog>
