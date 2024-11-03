@@ -13,6 +13,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { ImageIcon, MessageSquareDiff } from "lucide-react";
 import { users } from "@/dummy-data/db";
+import { Id } from "../../../convex/_generated/dataModel";
 
 const UserListDialog = () => {
 	const [selectedUsers, setSelectedUsers] = useState<Id<"users">[]>([]);
@@ -40,6 +41,12 @@ const UserListDialog = () => {
 					</div>
 				)}
 				{/* TODO: input file */}
+                <input
+                type="file"
+                accept="image/*"
+                ref={imgRef}
+                onChange={(e) => setSelectedImage(e.target.files![0])}
+                />
 				{selectedUsers.length > 1 && (
 					<>
 						<Input
