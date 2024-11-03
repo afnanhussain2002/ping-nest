@@ -45,6 +45,7 @@ const UserListDialog = () => {
                 type="file"
                 accept="image/*"
                 ref={imgRef}
+                hidden
                 onChange={(e) => setSelectedImage(e.target.files![0])}
                 />
 				{selectedUsers.length > 1 && (
@@ -54,7 +55,7 @@ const UserListDialog = () => {
 							value={groupName}
 							onChange={(e) => setGroupName(e.target.value)}
 						/>
-						<Button className='flex gap-2'>
+						<Button className='flex gap-2' onClick={() => imgRef.current?.click()}>
 							<ImageIcon size={20} />
 							Group Image
 						</Button>
